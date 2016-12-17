@@ -1,10 +1,19 @@
 import { Component } from '@angular/core';
 
-const todos : string = [
-    'Learn JS',
-    'Learn Ng2',
-    'Write first app'
-]
+const todos  = [
+    {
+        title : 'Learn JS',
+        completed : false
+    },
+    {
+        title : 'Learn Ng2',
+        completed : true
+    },
+    {
+        title : 'Write first app',
+        completed : false
+    }
+];
 
 @Component({
     moduleId: module.id,
@@ -14,5 +23,18 @@ const todos : string = [
 })
 export class AppComponent {
     title = 'Angular 2Do';
-    todos : string = todos;
+    todos  = todos;
+
+    toggle(todo : any){
+        // console.log('toggle', todo);
+        todo.completed = !todo.completed;
+    }
+
+    delete(todo : any){
+        let index = this.todos.indexOf(todo);
+        if (index > -1) {
+            this.todos.splice(index, 1);
+        }
+
+    }
 }
